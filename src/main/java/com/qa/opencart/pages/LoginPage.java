@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import com.qa.opencart.utils.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
 
+import io.qameta.allure.Step;
+
 public class LoginPage {
 	
 	private WebDriver driver;
@@ -34,22 +36,27 @@ public class LoginPage {
 	
 	
 	//public page actions/methods
+	@Step("getting login pagetitle....")
 	public String getLoginPageTitle() {
 		return eleUtil.waitForTitleIsAndCapture(AppConstants.LOGIN_PAGE_TITLE_VALUE, AppConstants.SHORT_DEFAULT_WAIT);		
 	}
 	
+	@Step("getting login page url")
 	public String getLoginPageUrl() {
 		return eleUtil.waitForURLContainsAndCapture(AppConstants.LOGIN_PAGE_URL_FRACTION_VALUE, AppConstants.SHORT_DEFAULT_WAIT);	
 	}
 	
+	@Step("checking forgot password link exist on the page")
 	public boolean isForgotPwdLinkExist() {
 		return eleUtil.checkElementIsDisplayed(forgotPwdlink);
 	}
 	
+	@Step("checking myaccount link exist on the page")
 	public boolean isMyAccountLinkExist() {
 		return driver.findElement(myAccountLink).isDisplayed();
 	}
 	
+	@Step("getting footer links")
 	public List<String> getFooterElementsList() {
 		List<WebElement> fppterLinksList = eleUtil.waitForElementsVisible(footerLinks,AppConstants.MEDIUM_DEFAULT_WAIT);
 		List<String> footerTextList = new ArrayList<String>();
